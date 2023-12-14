@@ -1,0 +1,3 @@
+# Replace cat with bat, for syntax highlighting
+alias cat="bat"
+
