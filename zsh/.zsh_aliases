@@ -1,3 +1,7 @@
 # Replace cat with bat, for syntax highlighting
 alias cat="bat"
 
+# Replace vim with nvim, for chad-li-hood
+alias vim="nvim"
+
+
