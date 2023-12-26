@@ -4,4 +4,6 @@ alias cat="bat"
 # Replace vim with nvim, for chad-li-hood
 alias vim="nvim"
 
+# Kubernetes
+alias k="kubectl"
 
