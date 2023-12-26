@@ -1,6 +1,5 @@
 # README for ZSH Configuration
 
-## Overview
 This README provides instructions for setting up ZSH using the configuration files in this repository, along with Oh My Zsh and the Powerlevel10k theme. These steps are intended for a clean installation on a new machine.
 
 ## Prerequisites
