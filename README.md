@@ -17,8 +17,18 @@ brew install bat
 3. Set Up Neovim. You can choose either NvChad or Lazy. Once setup, I recommend Including the following plugins at your leisure:
 - Telescope: for fuzzy finding and searching.
 - Treesitter: for advanced syntax highlighting and code manipulation.
-- Mason: for managing external editor tooling.
+- Mason: for managing external editor tooling with the following installs:
+    󰄳  clang-format
+    󰄳  clangd
+    󰄳  css-lsp
+    󰄳  html-lsp
+    󰄳  lua-language-server
+    󰄳  svelte-language-server
+    󰄳  tailwindcss-language-server
+    󰄳  ts-standard
+    󰄳  typescript-language-server
 - Vim-tmux-navigator: To vanquish your enemies, slay the dragon, and save the princess. 
+
 
 4. Source Tmux Configuration
 $ tmux source ~/.config/tmux/tmux.conf
