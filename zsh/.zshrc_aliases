@@ -4,3 +4,8 @@ alias cat="bat"
 # neovim > vim
 alias vim="nvim"
 
+# Python 
+alias pip=pip3
+alias python=python3
+
+
