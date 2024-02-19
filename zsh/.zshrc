@@ -112,16 +112,5 @@ source ~/.zsh_aliases
 # Profiles 
 # source ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# Add Visual Studio Code (code)
-# export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-# export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
 
 
-# export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-
-# PATH="/Users/ernesto/perl5/bin${PATH:+:${PATH}}"; export PATH;
-# PERL5LIB="/Users/ernesto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/Users/ernesto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/Users/ernesto/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/Users/ernesto/perl5"; export PERL_MM_OPT;

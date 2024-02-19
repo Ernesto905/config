@@ -7,3 +7,7 @@ alias vim="nvim"
 # Kubernetes
 alias k="kubectl"
 
+# Python
+alias python="python3"
+alias pip="pip3"
+
