@@ -22,16 +22,39 @@ fi
 # Update Homebrew and upgrade any already-installed formulae
 brew update && brew upgrade
 brew bundle install 
-brew install stow git
+brew install stow git # Just to be sure 
 
-# Install OhmyZsh and some useful plugins
-RUNZSH="no" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-## Symlinks
-# stow */
+# Get the location of the current script.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source ~/.zshrc
+# Paths to the source files
+ZSHRC="${SCRIPT_DIR}/zsh/.zshrc"
+ZPROFILE="${SCRIPT_DIR}/zsh/.zprofile"
+ZSH_ALIASES="${SCRIPT_DIR}/zsh/.zsh_aliases"
+TMUX="${SCRIPT_DIR}/tmux/.tmux.conf"
+
+# Paths to where the symlinks should be created
+TARGET_ZSHRC="$HOME/.zshrc"
+TARGET_ZPROFILE="$HOME/.zprofile"
+TARGET_ZSH_ALIASES="$HOME/.zsh_aliases"
+TARGET_TMUX="$HOME/.tmux.conf"
+
+# Remove existing files or links
+rm -f "$TARGET_ZSHRC" "$TARGET_ZPROFILE" "$TARGET_ZSH_ALIASES"
+rm -f "$TARGET_TMUX"
+
+# Clone each plugin
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tmux-sensible ~/.tmux/plugins/tmux-sensible
+git clone https://github.com/christoomey/vim-tmux-navigator ~/.tmux/plugins/vim-tmux-navigator
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.tmux/plugins/tmux-resurrect
+git clone https://github.com/jabirali/tmux-minimono ~/.tmux/plugins/tmux-minimono
+
+# Create new symlinks
+ln -s "$ZSHRC" "$TARGET_ZSHRC"
+ln -s "$ZPROFILE" "$TARGET_ZPROFILE"
+ln -s "$ZSH_ALIASES" "$TARGET_ZSH_ALIASES"
+ln -s "$TMUX" "$TARGET_TMUX"
+
+echo "Symlinks created successfully."
