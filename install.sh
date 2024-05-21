@@ -21,10 +21,12 @@ fi
 
 echo "Starting setup..."
 
-# Check if Homebrew is installed, install if not
+# Check if Homebrew is installed, install if not # Replace ernesto with your machine's user name
 if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/ernesto/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "Homebrew is already installed."
 fi
@@ -33,17 +35,9 @@ fi
 if ! brew update || ! brew upgrade; then
   abort "Homebrew update or upgrade failed."
 fi
-brew bundle install
-brew install stow git # Just to be sure
 
 # Get the location of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Back up an existing file to filename.filename.backup
-backup_file() {
-  local file=$1
-  [ -f "$file" ] && cp "$file" "${file}.backup"
-}
 
 # Paths to the source files
 ZSHRC="${SCRIPT_DIR}/zsh/.zshrc"
@@ -57,12 +51,7 @@ TARGET_ZPROFILE="$HOME/.zprofile"
 TARGET_ZSH_ALIASES="$HOME/.zsh_aliases"
 TARGET_TMUX="$HOME/.tmux.conf"
 
-# Remove existing files or links after backing them up
-backup_file "$TARGET_ZSHRC"
-backup_file "$TARGET_ZPROFILE"
-backup_file "$TARGET_ZSH_ALIASES"
-backup_file "$TARGET_TMUX"
-rm -f "$TARGET_ZSHRC" "$TARGET_ZPROFILE" "$TARGET_ZSH_ALIASES" "$TARGET_TMUX"
+# 
 
 # Prepare for tmux plugin installations
 mkdir -p ~/.tmux/plugins
@@ -92,9 +81,15 @@ create_symlink() {
   echo "Symlink created for $(basename "$source")"
 }
 
+# Remove files for symlinks
+rm -rf $TARGET_ZSHRC
+rm -rf $TARGET_ZPROFILE
+rm -rf $TARGET_ZSH_ALIASES
+rm -rf $TARGET_TMUX
+
 create_symlink "$ZSHRC" "$TARGET_ZSHRC"
-create_symlink "$ZPROFILE" "$TARGET_ZPROFILE"
 create_symlink "$ZSH_ALIASES" "$TARGET_ZSH_ALIASES"
+create_symlink "$ZPROFILE" "$TARGET_ZPROFILE"
 create_symlink "$TMUX" "$TARGET_TMUX"
 
 echo "Setup completed successfully."
