@@ -36,6 +36,9 @@ if ! brew update || ! brew upgrade; then
   abort "Homebrew update or upgrade failed."
 fi
 
+# Install Brewfile
+brew bundle install
+
 # Get the location of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -50,8 +53,6 @@ TARGET_ZSHRC="$HOME/.zshrc"
 TARGET_ZPROFILE="$HOME/.zprofile"
 TARGET_ZSH_ALIASES="$HOME/.zsh_aliases"
 TARGET_TMUX="$HOME/.tmux.conf"
-
-# 
 
 # Prepare for tmux plugin installations
 mkdir -p ~/.tmux/plugins
