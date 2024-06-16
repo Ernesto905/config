@@ -3,3 +3,5 @@ Here, I host my personalized dotfiles for Alacritty, neovim, and tmux. Also incl
 
 Note, this will overwrite some stuff, so i recommed you read through the install script and edit it to best suit your needs. 
 
+This has been tested to work on Apple silicon alone. 
+
