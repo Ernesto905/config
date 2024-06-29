@@ -25,7 +25,7 @@ echo "Starting setup..."
 if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
-    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/ernesto/.zprofile
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "Homebrew is already installed."
