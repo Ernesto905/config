@@ -22,23 +22,23 @@ fi
 echo "Starting setup..."
 
 # Check if Homebrew is installed, install if not # Replace ernesto with your machine's user name
-if ! command -v brew &>/dev/null; then
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
-    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    echo "Homebrew is already installed."
-fi
-
-# Update Homebrew and upgrade any already-installed formulae
-if ! brew update || ! brew upgrade; then
-  abort "Homebrew update or upgrade failed."
-fi
-
-# Install Brewfile
-brew bundle install
-
+# if ! command -v brew &>/dev/null; then
+#     echo "Installing Homebrew..."
+#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
+#     (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile
+#     eval "$(/opt/homebrew/bin/brew shellenv)"
+# else
+#     echo "Homebrew is already installed."
+# fi
+#
+# # Update Homebrew and upgrade any already-installed formulae
+# if ! brew update || ! brew upgrade; then
+#   abort "Homebrew update or upgrade failed."
+# fi
+#
+# # Install Brewfile
+# brew bundle install
+#
 # Get the location of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
