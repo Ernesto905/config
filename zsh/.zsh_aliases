@@ -7,3 +7,6 @@ alias pip="pip3"
 
 # Vim 
 alias vim="nvim"
+
+# Better ls
+alias ls="eza --icons=always"

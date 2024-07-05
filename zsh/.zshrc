@@ -36,13 +36,10 @@ source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Aliases
-alias ls="eza --icons=always"
 source ~/.zsh_aliases
 
 # Vi mode
 bindkey -v
-
-export DEVOPS=true
 
 # Add ~/bin to the beginning of the PATH
 export PATH=~/bin:$PATH
@@ -58,9 +55,9 @@ fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
 # Initialize pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
 # Add Homebrew to PATH
 export PATH="$BREW_PREFIX/bin:$PATH"

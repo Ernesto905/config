@@ -3,13 +3,13 @@
 ## Error Handling
 set -euo pipefail
 
-# Function to handle premature exits
+# Handle premature exits
 abort() {
   echo "Error: $@" >&2
   exit 1
 }
 
-## Check bash is installed
+## Ensure bash is installed
 if [ -z "${BASH_VERSION:-}" ]; then
   abort "Bash is required to interpret this script."
 fi
@@ -21,23 +21,23 @@ fi
 
 echo "Starting setup..."
 
-# Check if Homebrew is installed, install if not # Replace ernesto with your machine's user name
-# if ! command -v brew &>/dev/null; then
-#     echo "Installing Homebrew..."
-#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
-#     (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile
-#     eval "$(/opt/homebrew/bin/brew shellenv)"
-# else
-#     echo "Homebrew is already installed."
-# fi
-#
-# # Update Homebrew and upgrade any already-installed formulae
-# if ! brew update || ! brew upgrade; then
-#   abort "Homebrew update or upgrade failed."
-# fi
-#
-# # Install Brewfile
-# brew bundle install
+# Check if Homebrew is installed, install if not 
+if ! command -v brew &>/dev/null; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || abort "Failed to install Homebrew."
+    (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    echo "Homebrew is already installed."
+fi
+
+# Update Homebrew and upgrade any already-installed formulae
+if ! brew update || ! brew upgrade; then
+  abort "Homebrew update or upgrade failed."
+fi
+
+# Install 
+brew bundle install
 #
 # Get the location of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -57,7 +57,7 @@ TARGET_TMUX="$HOME/.tmux.conf"
 # Prepare for tmux plugin installations
 mkdir -p ~/.tmux/plugins
 
-# Clone each plugin safely
+# Clone each plugin
 clone_plugin() {
   local url=$1
   local path="$HOME/.tmux/plugins/$(basename "$url" .git)"
