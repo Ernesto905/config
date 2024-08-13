@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+echo "Happy Hacking, $USER! 🚀"
 # Determine the Homebrew prefix
 if [[ -d "/opt/homebrew" ]]; then
     BREW_PREFIX="/opt/homebrew"

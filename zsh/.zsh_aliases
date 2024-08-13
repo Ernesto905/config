@@ -1,6 +1,10 @@
 # Kubernetes
 alias k="kubectl"
 
+# Python 
+alias python="python3"
+
+
 # Vim 
 alias vim="nvim"
 
