@@ -56,10 +56,12 @@ fpath=(~/.zsh $fpath)
 # Initialize Zsh's completion system
 autoload -Uz compinit && compinit
 
-# Initialize pyenv
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
 
 # Add Homebrew to PATH
 export PATH="$BREW_PREFIX/bin:$PATH"
+export PATH="/Users/ernesto/spack/bin:$PATH"
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
