@@ -1,3 +1,11 @@
+--[[
+Order:
+1. Opts 
+2. Globals 
+3. Autocmds
+--]]
+
+-- [[ Opts ]]
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
@@ -35,3 +43,17 @@ vim.opt.cursorline = true
 
 -- Lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
+
+-- [[ Globals ]]
+-- nerd fonts
+vim.g.have_nerd_font = true
+
+-- [[ Autocmds ]]
+-- Highlight when yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
